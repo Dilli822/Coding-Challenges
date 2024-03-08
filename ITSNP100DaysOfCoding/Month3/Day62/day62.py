@@ -19,12 +19,12 @@ tfd = tfp.distributions
 
 
 # starting 0.2 % of cold and 0.8% of hot
-present_day_hot_percentage = 0.8
-remaining_present_day_hot_percentage = 0.2
+present_day_hot_percentage = 0.9
+remaining_present_day_hot_percentage = 0.1
 
 # chances of  0.3 % of cold and 0.7% of hot
-transition_distribution_percentage = 0.7
-remain_transition_distribution_percentage = 0.3
+transition_distribution_percentage = 0.25
+remain_transition_distribution_percentage = 0.75
 
 initial_distribution = tfd.Categorical(probs =[ remaining_present_day_hot_percentage, present_day_hot_percentage])
 transition_distribution = tfd.Categorical(probs=[
@@ -33,7 +33,7 @@ transition_distribution = tfd.Categorical(probs=[
 ])
 # note we are using 0. or 10. just making sure our data types doesnot mismatch
 # .Normal terms refers to the statistics concept
-observation_distribution = tfd.Normal(loc = [0. , 35.], scale = [5., 10.] ) # refers to point 3 and 4 above and points 5 above
+observation_distribution = tfd.Normal(loc = [0. , 26.], scale = [5., 10.] ) # refers to point 3 and 4 above and points 5 above
 
 # loc argument represents the mean and the scale is the standard deviation
 
@@ -42,7 +42,7 @@ model = tfd.HiddenMarkovModel(
     initial_distribution = initial_distribution,
     transition_distribution = transition_distribution,
     observation_distribution = observation_distribution,
-    num_steps = 7     # num_steps = how many days or the cycle we want to predict
+    num_steps = 7    # num_steps = how many days or the cycle we want to predict
 )
 
 
