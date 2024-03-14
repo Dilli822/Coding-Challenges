@@ -75,7 +75,7 @@ our original input, and allows us to look at features that are
 maybe right on the edges of images that we might not have been 
 able to see. Although this is not important for large but understanding
 is and applying for small is fine. X are added to mark cross.
-
+More the padding smaller the output feature map.
 --- STRIDE ----- 
 Stride is something that explain how many times we move the sample box
 every time that we are about to move it.
