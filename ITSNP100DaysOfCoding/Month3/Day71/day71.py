@@ -51,7 +51,7 @@ model.compile(
     loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
     metrics=['accuracy'])
 
-history = model.fit(train_images, train_labels, epochs= 6,
+history = model.fit(train_images, train_labels, epochs=18,
                     validation_data = (test_images, test_labels))
 
 # loss: 0.9012 - accuracy: 0.6836 - val_loss: 0.9445 - val_accuracy: 0.6711
