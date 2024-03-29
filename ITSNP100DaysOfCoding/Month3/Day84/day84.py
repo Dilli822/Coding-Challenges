@@ -32,7 +32,7 @@ model.summary()
 
 # Training Magic Happens here. Compile and train the model
 model.compile(loss="binary_crossentropy", optimizer="rmsprop", metrics=["acc"])
-history = model.fit(train_data, train_labels, epochs=2, validation_split=0.2)
+history = model.fit(train_data, train_labels, epochs=10, validation_split=0.2)
 
 results = model.evaluate(test_data, test_labels)
 print("Final Model Evaluation result: ", results)
@@ -207,18 +207,15 @@ def predict(text):
     print(result[0])
 
 # Example for a positive review
-positive_review = "That movie was so awesome! I really loved it and would watch it again because it was amazingly great "
-positive_review_percentage = predict(positive_review)
+# positive_review = "That movie was so awesome! I really loved it and would watch it again because it was amazingly great "
+# positive_review_percentage = predict(positive_review)
 
 # Example for a negative review
 negative_review = "That movie sucked. I hated it and wouldn't watch it again. It was one of the worst things I've ever watched. "
 negative_review_percentage = predict(negative_review)
 
-# Increase epochs
-history = model.fit(train_data, train_labels, epochs=5, validation_split=0.2)
-
 # Plotting accuracy values
-plt.plot([positive_review_percentage, negative_review_percentage], marker='o', linestyle='-', color='b', label='Reviews')
+plt.plot(negative_review_percentage, marker='o', markersize=12, linestyle='-', color='r', label='Negative Reviews')
 plt.xlabel('Review')
 plt.ylabel('Accuracy')
 plt.title('Sentiment Analysis')
