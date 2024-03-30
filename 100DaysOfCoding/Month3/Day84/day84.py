@@ -204,7 +204,7 @@ def predict(text):
     encoded_text = encode_text(text)
     pred = np.zeros((1, 250))  # Corrected the shape of the numpy array
     result = model.predict(pred)
-    print(result[0])
+    print(result[0][0])
 
 # Example for a positive review
 # positive_review = "That movie was so awesome! I really loved it and would watch it again because it was amazingly great "
