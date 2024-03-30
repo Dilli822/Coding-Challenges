@@ -203,22 +203,31 @@ That movie sucked. I hated it and wouldn't watch it again. It was one of the wor
 def predict(text):
     encoded_text = encode_text(text)
     pred = np.zeros((1, 250))  # Corrected the shape of the numpy array
+    pred[0] = encoded_text  # Update the prediction array with encoded text
     result = model.predict(pred)
-    print(result[0][0])
+    return result[0][0]  # Return the predicted sentiment score
 
 # Example for a positive review
-# positive_review = "That movie was so awesome! I really loved it and would watch it again because it was amazingly great "
-# positive_review_percentage = predict(positive_review)
+positive_review = "That movie was so awesome! I really loved it and would watch it again because it was amazingly great "
+positive_review_prediction = predict(positive_review)
+print("Positive Review Prediction:", positive_review_prediction)
 
 # Example for a negative review
 negative_review = "That movie sucked. I hated it and wouldn't watch it again. It was one of the worst things I've ever watched. "
-negative_review_percentage = predict(negative_review)
+negative_review_prediction = predict(negative_review)
+print("Negative Review Prediction:", negative_review_prediction)
 
 # Plotting accuracy values
-plt.plot(negative_review_percentage, marker='o', markersize=12, linestyle='-', color='r', label='Negative Reviews')
-plt.xlabel('Review')
+plt.plot(negative_review_prediction, marker='o', markersize=6, linestyle='-', color='r', label='Negative Reviews')
+plt.xlabel('Sentiment Analysis for Negative Review')
 plt.ylabel('Accuracy')
-plt.title('Sentiment Analysis')
+plt.title(negative_review)
 plt.show()
 
 
+# Plotting accuracy values
+plt.plot(positive_review_prediction, marker='o', markersize=6, linestyle='-', color='g', label='Positive Reviews')
+plt.xlabel('Sentiment Analysis for Positive Review')
+plt.ylabel('Accuracy')
+plt.title(positive_review)
+plt.show()
